@@ -24,5 +24,25 @@ async def ajuda(ctx: commands.Context):
     """
     help_m = discord.Embed(title="Lista de comandos atuais:", description=help_descricao, color=discord.Color.blue())
 
-x = ler_ficha('registro')
-print(x)
+    await ctx.reply(embed=help_m)
+
+@bot.command()
+async def rolar(ctx: commands.Context, lados: int):
+    try:
+        resultado = dado(lados)
+        await ctx.reply(f'{resultado}')
+    except BadArgument:
+        print("Valor inválido")
+
+
+@rolar.error
+async def rtd_error(ctx: commands.Context, error: commands.CommandError):
+    if isinstance(error, commands.BadArgument):
+        await ctx.reply("Digite um número válido")
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.reply("Digite um número válido")
+    else:
+        await ctx.reply("Ocorreu um erro ao processar o comando.")
+
+
+bot.run(token)
