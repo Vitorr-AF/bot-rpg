@@ -27,6 +27,15 @@ def dado(lados):
     resultado = random.randint(1, lados)
     return resultado
 
+
+def ler_token():
+    with open('token.txt', 'r', encoding='utf-8') as token:
+        return token.read()
+
+
+
+
+
 # def ler_ficha(nome):
 #     with open(f'{nome}.txt', 'r', encoding='utf-8') as ficha_lista:
 #         linhas = ficha_lista.readlines()
