@@ -1,3 +1,6 @@
+import random
+
+
 def ler_ficha(nome):
     with open(f'{nome}.txt', 'r', encoding='utf-8') as ficha_lista:
         ficha = ficha_lista.read()
@@ -7,7 +10,7 @@ def ler_ficha(nome):
 
 def ver_mod(valor):
     try:
-        mod = int((valor - 10) // 2)
+        mod = (valor - 10) // 2
         if mod >= 0:
             return f'+{mod}'
         else:
@@ -20,6 +23,9 @@ def ver_mod(valor):
         return '???'
 
 
+def dado(lados):
+    resultado = random.randint(1, lados)
+    return resultado
 
 # def ler_ficha(nome):
 #     with open(f'{nome}.txt', 'r', encoding='utf-8') as ficha_lista:
