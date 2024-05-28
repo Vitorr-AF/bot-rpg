@@ -1,0 +1,7 @@
+Nome: catatau
+Força: 20
+Destreza: 11
+Constituição: 17
+Inteligência: 10
+Sabedoria: 12
+Carisma: 10
