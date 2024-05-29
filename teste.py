@@ -11,10 +11,7 @@ def ler_ficha(nome): # terminado
 def ver_mod(valor): # terminado
     try:
         mod = (valor - 10) // 2
-        if mod >= 0:
-            return f'+{mod}'
-        else:
-            return f'{mod}'
+        return mod
     except ValueError:
         print('Valor de habilidade inváido')
         return '???'
@@ -48,9 +45,9 @@ def ver_mod_player(player, habilidade): # terminado
     ficha = encontrar_ficha(player)
     for x in ficha:
         linha = x.split(' ')
-        if linha[0] == habilidade + ':' :
-            mod = ver_mod(linha[1])
-            return mod
+        if linha[0].lower() == habilidade.lower() + ':' :
+            mod = ver_mod(linha[1].strip())
+            return int(mod)
     print('Habilidade inválida!')
 
 # Retorna a ficha completa de um personagem como uma lista
@@ -59,3 +56,11 @@ def encontrar_ficha(player): # terminado
     with open(f'{arquivo}.txt', 'r', encoding='utf-8') as ficha_lista:
         ficha = ficha_lista.readlines()
     return ficha
+
+
+def registrar(player):
+    with open('registrado.txt', 'r', encoding='utf-8') as registros:
+        linhas = registros.readlines()
+    num_player = len(linhas) + 1
+    with open('registrado.txt', 'a', encoding='utf-8') as registros:
+        registros.write(f'\n{player} player{num_player}')
