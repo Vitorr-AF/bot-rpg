@@ -34,8 +34,13 @@ def ler_token():
 
 
 def conferir_registro(player):
-    with open('registro.txt', 'r', encoding='utf-8') as registros:
+    with open('registrado.txt', 'r', encoding='utf-8') as registros:
         linhas = registros.readlines()
+        for x in linhas:
+            linha = x.split(' ')
+            if linha[0] == player:
+                return linha[1], True
+        return 'Jogador não registrado', False
 
 
 def ver_mod_player(player, habilidade):
