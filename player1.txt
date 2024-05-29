@@ -1,0 +1,7 @@
+Nome: catatau
+For: 20
+Des: 11
+Con: 17
+Int: 10
+Sab: 12
+Car: 10

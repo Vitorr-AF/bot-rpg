@@ -26,11 +26,21 @@ async def ajuda(ctx: commands.Context):
 
     await ctx.reply(embed=help_m)
 
+
 @bot.command()
-async def rolar(ctx: commands.Context, lados: int):
+async def srolar(ctx: commands.Context, lados: int):
     try:
         resultado = dado(lados)
-        await ctx.reply(f'{resultado}')
+        await ctx.reply(f'Você tirou {resultado}!')
+    except BadArgument:
+        print("Valor inválido")
+
+
+@bot.command()
+async def rolar(ctx: commands.Context, habilidade):
+    try:
+        resultado = dado(20)
+        await ctx.reply(f'Você tirou {resultado}')
     except BadArgument:
         print("Valor inválido")
 

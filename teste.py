@@ -33,6 +33,19 @@ def ler_token():
         return token.read()
 
 
+def conferir_registro(player):
+    with open('registro.txt', 'r', encoding='utf-8') as registros:
+        linhas = registros.readlines()
+
+
+def ver_mod_player(player, habilidade):
+    ficha = encontrar_ficha(player)
+    for x in ficha:
+        linha = x.split(' ')
+        if linha[0] == habilidade + ':' :
+            mod = ver_mod(linha[1])
+            return mod
+    print('Habilidade inválida!')
 
 
 
