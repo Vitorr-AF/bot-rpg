@@ -39,8 +39,19 @@ async def srolar(ctx: commands.Context, lados: int):
 @bot.command()
 async def rolar(ctx: commands.Context, habilidade):
     try:
-        resultado = dado(20)
-        await ctx.reply(f'Você tirou {resultado}')
+        player = ctx.author.id
+        registro = conferir_registro(player)
+        if registro[1] == True:
+            resultado = dado(20)
+            mod = ver_mod_player(player, habilidade)
+            resultado_final = resultado + mod
+            if mod > 0:
+                await ctx.reply(f'Você tirou {resultado_final}! ({resultado} + {mod})')
+            else:
+                mod *= -1
+                await ctx.reply(f'Você tirou {resultado_final}! ({resultado} - {mod})')
+        else:
+            await ctx.reply('Você não está registrado!')
     except BadArgument:
         print("Valor inválido")
 
