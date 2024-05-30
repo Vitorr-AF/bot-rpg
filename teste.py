@@ -57,12 +57,12 @@ def encontrar_ficha(player): # terminado
         ficha = ficha_lista.readlines()
     return ficha
 
-# Registra o 
-def registrar(player):
+# Registra a ficha de um player pelo nome dele
+def registrar(jogador):
     with open('registrado.txt', 'r', encoding='utf-8') as registros:
         linhas = registros.readlines()
     num_player = len(linhas) + 1
     with open('registrado.txt', 'a', encoding='utf-8') as registros:
-        registros.write(f'\n{player} player{num_player}')
+        registros.write(f'\n{jogador} player{num_player}')
     with open(f'player{num_player}.txt', 'w', encoding='utf-8') as ficha:
         ficha.write(f"Nome: player{num_player}\nFor: 0\nDes: 0\nCon: 0\nInt: 0\nSab: 0\nCar: 0")
