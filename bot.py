@@ -56,6 +56,16 @@ async def rolar(ctx: commands.Context, habilidade):
         print("Valor inválido")
 
 
+@bot.command()
+async def registrar(ctx: commands.Context):
+    player = ctx.author.id
+    _, registrado = conferir_registro(player)
+    if registrado == True:
+        await ctx.reply("Você ja esta registrado!")
+    else:
+        registrar_player(player)
+        await ctx.reply("Registrado com sucesso!")
+
 @rolar.error
 async def rtd_error(ctx: commands.Context, error: commands.CommandError):
     if isinstance(error, commands.BadArgument):
