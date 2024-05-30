@@ -1,7 +1,7 @@
-Nome: player
-FOR: 10
+NOME: player1
+FOR: 15
 DES: 10
 CON: 10
 INT: 10
 SAB: 10
-CAR: 10
+CAR: 15

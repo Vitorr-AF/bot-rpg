@@ -9,6 +9,8 @@ def ler_ficha(nome): # terminado
 
 # Retorna o modificador de um valor de habilidade
 def ver_mod(valor): # terminado
+    print(valor)
+    valor = int(valor)
     try:
         mod = (valor - 10) // 2
         return mod
@@ -37,7 +39,7 @@ def conferir_registro(player): # terminado
         for x in linhas:
             linha = x.split(' ')
             if linha[0] == str(player):
-                return linha[1], True
+                return linha[1].strip(), True
         return 'Jogador não registrado', False
 
 # Retorna o modificador de uma habilidade específica de um player específico pelo id
@@ -69,20 +71,24 @@ def registrar_player(player):
 
 
 def registrar_habilidade(player, habilidade, valor):
-    if int(valor) > 0:
-        ficha = encontrar_ficha(player)
-        print(len(ficha))
-        for x in range(len(ficha)):
-            print('for')
-            linha = ficha[x].split(' ')
-            if linha[0].lower() == habilidade.lower() + ':' and x+1 < len(ficha):
-                ficha[x] = habilidade.upper() + ': ' + f'{valor}\n'
-                reescrever_ficha(player, ficha)
-                return
-            elif linha[0].lower() == habilidade.lower() + ':' and x+1 == len(ficha):
-                ficha[x] = habilidade.upper() + ': ' + f'{valor}'
-                reescrever_ficha(player, ficha)
-                return
-        print("Habilidade inválida!")
-    else:
-        print("Valor inválido!")
+    ficha = encontrar_ficha(player)
+    for x in range(len(ficha)):
+        linha = ficha[x].split(' ')
+        if linha[0].lower() == habilidade.lower() + ':' and x+1 < len(ficha):
+            ficha[x] = habilidade.upper() + ': ' + f'{valor}\n'
+            reescrever_ficha(player, ficha)
+            return
+        elif linha[0].lower() == habilidade.lower() + ':' and x+1 == len(ficha):
+            ficha[x] = habilidade.upper() + ': ' + f'{valor}'
+            reescrever_ficha(player, ficha)
+            return
+    print("Habilidade inválida!")
+
+
+def reescrever_ficha(player, ficha):
+    arquivo, _ = conferir_registro(player)
+    ficha_nova = ""
+    for linha in ficha:
+        ficha_nova = ficha_nova + linha
+    with open(f'{arquivo}.txt', 'w', encoding='utf-8') as ficha_velha:
+        ficha_velha.write(ficha_nova)

@@ -45,7 +45,7 @@ async def rolar(ctx: commands.Context, habilidade):
             resultado = dado(20)
             mod = ver_mod_player(player, habilidade)
             resultado_final = resultado + mod
-            if mod > 0:
+            if mod >= 0:
                 await ctx.reply(f'Você tirou {resultado_final}! ({resultado} + {mod})')
             else:
                 mod *= -1
