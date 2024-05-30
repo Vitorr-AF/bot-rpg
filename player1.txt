@@ -1,7 +1,7 @@
 Nome: player
-For: 10
-Des: 10
-Con: 10
-Int: 10
-Sab: 10
-Car: 10
+FOR: 10
+DES: 10
+CON: 10
+INT: 10
+SAB: 10
+CAR: 10

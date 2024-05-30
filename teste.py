@@ -66,3 +66,23 @@ def registrar_player(player):
         registros.write(f'\n{player} player{num_player}')
     with open(f'player{num_player}.txt', 'w', encoding='utf-8') as ficha:
         ficha.write(f"Nome: player{num_player}\nFor: 10\nDes: 10\nCon: 10\nInt: 10\nSab: 10\nCar: 10")
+
+
+def registrar_habilidade(player, habilidade, valor):
+    if int(valor) > 0:
+        ficha = encontrar_ficha(player)
+        print(len(ficha))
+        for x in range(len(ficha)):
+            print('for')
+            linha = ficha[x].split(' ')
+            if linha[0].lower() == habilidade.lower() + ':' and x+1 < len(ficha):
+                ficha[x] = habilidade.upper() + ': ' + f'{valor}\n'
+                reescrever_ficha(player, ficha)
+                return
+            elif linha[0].lower() == habilidade.lower() + ':' and x+1 == len(ficha):
+                ficha[x] = habilidade.upper() + ': ' + f'{valor}'
+                reescrever_ficha(player, ficha)
+                return
+        print("Habilidade inválida!")
+    else:
+        print("Valor inválido!")
