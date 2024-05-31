@@ -1,0 +1,7 @@
+Nome: player3
+For: 15
+Des: 10
+Con: 10
+Int: 10
+Sab: 10
+Car: 10

@@ -75,5 +75,14 @@ async def rtd_error(ctx: commands.Context, error: commands.CommandError):
     else:
         await ctx.reply("Ocorreu um erro ao processar o comando.")
 
+@bot.command()
+async def minha_ficha(ctx: commands.Context):
+    player = ctx.author.id
+    ficha_nome, registrado = conferir_registro(player)
+    if registrado == True:
+        ficha = ler_ficha(ficha_nome)
+        await ctx.reply(f"{ficha}")
+    else:
+        await ctx.reply("Você não está registrado")
 
 bot.run(token)
