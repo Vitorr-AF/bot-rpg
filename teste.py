@@ -68,6 +68,7 @@ def registrar_player(player):
         registros.write(f'\n{player} player{num_player}')
     with open(f'player{num_player}.txt', 'w', encoding='utf-8') as ficha:
         ficha.write(f"Nome: player{num_player}\nFor: 10\nDes: 10\nCon: 10\nInt: 10\nSab: 10\nCar: 10")
+    atualizar_gitignore(f'player{num_player}.txt')
 
 
 def registrar_habilidade(player, habilidade, valor):
@@ -92,3 +93,16 @@ def reescrever_ficha(player, ficha):
         ficha_nova = ficha_nova + linha
     with open(f'{arquivo}.txt', 'w', encoding='utf-8') as ficha_velha:
         ficha_velha.write(ficha_nova)
+
+def atualizar_gitignore(player_filename):
+    gitignore_path = '.gitignore'
+    
+    try:
+        with open(gitignore_path, 'r', encoding='utf-8') as gitignore_file:
+            linhas = gitignore_file.readlines()
+    except FileNotFoundError:
+        linhas = []
+
+    if player_filename + '\n' not in linhas:
+        with open(gitignore_path, 'a', encoding='utf-8') as gitignore_file:
+            gitignore_file.write('\n' + player_filename)

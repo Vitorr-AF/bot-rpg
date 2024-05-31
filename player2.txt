@@ -1,7 +1,0 @@
-Nome: player2
-For: 10
-Des: 10
-Con: 10
-Int: 10
-Sab: 10
-Car: 10
