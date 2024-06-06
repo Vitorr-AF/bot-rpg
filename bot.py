@@ -19,8 +19,11 @@ bot = commands.Bot(command_prefix=".", intents=permissoes)
 #.help (mostra a lista de comandos)
 @bot.command()
 async def ajuda(ctx: commands.Context):
-    help_descricao = """
-
+    help_descricao = """.ajuda: mostra todos os comandos
+.srolar (numero de lados): rola um dado de sorte / sem modificador
+.rolar (habilidade): rola o dado de uma habilidade específica
+.registrar: te registra na lista de jogadores e cria uma ficha padrão pra você
+.minha_ficha: mostra a sua ficha completa
     """
     help_m = discord.Embed(title="Lista de comandos atuais:", description=help_descricao, color=discord.Color.blue())
 
