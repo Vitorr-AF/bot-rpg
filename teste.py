@@ -86,11 +86,10 @@ def registrar_habilidade(player, habilidade, valor):
     lastLine = len(ficha) - 1
     ficha[lastLine] = ficha[lastLine] + '\n'
     ficha.append(habilidade.upper() + ': ' + f'{valor}')
-    print(ficha)
     reescrever_ficha(player, ficha)
     return
 
-
+# Pega uma lista com os novos valores da lista e substitui ela
 def reescrever_ficha(player, ficha):
     arquivo, _ = conferir_registro(player)
     ficha_nova = ""
@@ -99,6 +98,7 @@ def reescrever_ficha(player, ficha):
     with open(f'{arquivo}.txt', 'w', encoding='utf-8') as ficha_velha:
         ficha_velha.write(ficha_nova)
 
+# Adiciona automáticamente arquivos ao .gitignore
 def atualizar_gitignore(player_filename):
     gitignore_path = '.gitignore'
     
@@ -111,3 +111,11 @@ def atualizar_gitignore(player_filename):
     if player_filename + '\n' not in linhas:
         with open(gitignore_path, 'a', encoding='utf-8') as gitignore_file:
             gitignore_file.write('\n' + player_filename)
+
+# Com base no cargo do jogador, confere se ele é o mestre do jogo
+# Usado pra funções exclusivas do mestre, como permitir que os jogadores mudem suas fichas
+def verificar_mestre(cargo):
+    if cargo == 'DM':
+        return True
+    else:
+        return False
