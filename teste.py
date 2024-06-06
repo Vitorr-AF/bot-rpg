@@ -70,7 +70,7 @@ def registrar_player(player):
         ficha.write(f"Nome: player{num_player}\nFor: 10\nDes: 10\nCon: 10\nInt: 10\nSab: 10\nCar: 10")
     atualizar_gitignore(f'player{num_player}.txt')
 
-
+# Muda o valor de uma habilidade
 def registrar_habilidade(player, habilidade, valor):
     ficha = encontrar_ficha(player)
     for x in range(len(ficha)):
@@ -83,7 +83,12 @@ def registrar_habilidade(player, habilidade, valor):
             ficha[x] = habilidade.upper() + ': ' + f'{valor}'
             reescrever_ficha(player, ficha)
             return
-    print("Habilidade inválida!")
+    lastLine = len(ficha) - 1
+    ficha[lastLine] = ficha[lastLine] + '\n'
+    ficha.append(habilidade.upper() + ': ' + f'{valor}')
+    print(ficha)
+    reescrever_ficha(player, ficha)
+    return
 
 
 def reescrever_ficha(player, ficha):
