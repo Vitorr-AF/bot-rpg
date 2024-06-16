@@ -94,6 +94,7 @@ def reescrever_ficha(player, ficha):
     with open(f'{arquivo}.txt', 'w', encoding='utf-8') as ficha_velha:
         ficha_velha.write(ficha_nova)
 
+
 def atualizar_gitignore(player_filename):
     gitignore_path = '.gitignore'
     
@@ -106,3 +107,8 @@ def atualizar_gitignore(player_filename):
     if player_filename + '\n' not in linhas:
         with open(gitignore_path, 'a', encoding='utf-8') as gitignore_file:
             gitignore_file.write('\n' + player_filename)
+
+
+def checar_mestre(cargos):
+    mestre = any(role.name == "DM" for role in cargos)
+    return mestre

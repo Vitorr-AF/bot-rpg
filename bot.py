@@ -66,6 +66,7 @@ async def registrar(ctx: commands.Context):
         registrar_player(player)
         await ctx.reply("Registrado com sucesso!")
 
+
 @rolar.error
 async def rtd_error(ctx: commands.Context, error: commands.CommandError):
     if isinstance(error, commands.BadArgument):
@@ -74,6 +75,7 @@ async def rtd_error(ctx: commands.Context, error: commands.CommandError):
         await ctx.reply("Digite um número válido")
     else:
         await ctx.reply("Ocorreu um erro ao processar o comando.")
+
 
 @bot.command()
 async def minha_ficha(ctx: commands.Context):
@@ -84,5 +86,13 @@ async def minha_ficha(ctx: commands.Context):
         await ctx.reply(f"{ficha}")
     else:
         await ctx.reply("Você não está registrado")
+
+
+@bot.command()
+async def cargo(ctx: commands.Context):
+    cargos = ctx.author.roles
+    print(checar_mestre(cargos))
+    
+
 
 bot.run(token)
