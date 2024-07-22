@@ -15,6 +15,7 @@ token = ler_token()
 
 bot = commands.Bot(command_prefix=".", intents=permissoes)
 
+modo_editor = False
 
 #.help (mostra a lista de comandos)
 @bot.command()
@@ -97,5 +98,19 @@ async def cargo(ctx: commands.Context):
     print(checar_mestre(cargos))
     
 
+@bot.command()
+async def edicao(ctx: commands.Context):
+    cargos = ctx.author.roles
+    global modo_editor
+    print(modo_editor)
+    if checar_mestre(cargos) == True:
+        if modo_editor == False:
+            modo_editor = True
+            await ctx.reply("Ativando modo editor")
+        else:
+            modo_editor = False
+            await ctx.reply("Desativando modo editor")
+    else:
+        await ctx.reply(f'Você não tem permissão para alterar o modo editor (no momento {modo_editor})')
 
 bot.run(token)
