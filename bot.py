@@ -113,4 +113,19 @@ async def edicao(ctx: commands.Context):
     else:
         await ctx.reply(f'Você não tem permissão para alterar o modo editor (no momento {modo_editor})')
 
+
+@bot.command()
+async def editar(ctx: commands.Context, atributo, valor: int):
+    global modo_editor
+    player = ctx.author.id
+    if modo_editor == True:
+        _, registrado = conferir_registro(player)
+        if registrado == True:
+            registrar_habilidade(player, atributo, valor)
+        else:
+            await ctx.reply("Você não está registrado")
+    else:
+        await ctx.reply("O modo editor está desativado")
+
+
 bot.run(token)
