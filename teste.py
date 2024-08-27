@@ -116,3 +116,13 @@ def atualizar_gitignore(player_filename):
 def checar_mestre(cargos):
     mestre = any(role.name == "DM" for role in cargos)
     return mestre
+
+
+def ver_valor_atributo(player, atributo):
+    ficha = encontrar_ficha(player)
+    for x in ficha:
+        linha = x.split(' ')
+        if linha[0].lower() == atributo.lower() + ':' :
+            valor = linha[1].strip()
+            return int(valor)
+    print('Habilidade inválida!')
